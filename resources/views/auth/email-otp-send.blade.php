@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> quicksecureindia.com </title>
+    <title> Computer Solution </title>
 </head>
 <body>
-    Your Quick Secure India login OTP code is  <strong>{{ session('otp')}}</strong>;
+    Your Computer Solution OTP code is  <strong>{{ session('otp')}}</strong>;
 </body>
 </html>

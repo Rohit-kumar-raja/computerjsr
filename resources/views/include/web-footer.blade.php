@@ -5,7 +5,7 @@
             <!-- BEGIN BOTTOM ABOUT BLOCK -->
             <div class="col-md-3 col-sm-6 pre-footer-col">
                 <h2>About us</h2>
-                <p>The Quick Support Company is a start-up registered with the ROC under company Act 2013 which can
+                <p>The Computer solution is a start-up registered with the ROC under company Act 2013 which can
                     be checked and verified through MCA. The registration will be completed by the end of March 2022
                     and come in effect in April 2022. </p>
             </div>
@@ -102,7 +102,7 @@
         <div class="row">
             <!-- BEGIN COPYRIGHT -->
             <div class="col-md-4 col-sm-4 padding-top-10">
-                2022 © Quick Secure India PVT.Ltd. ALL Rights Reserved.
+                2022 © Computer Solution ALL Rights Reserved.
             </div>
             <!-- END COPYRIGHT -->
             <!-- BEGIN PAYMENTS -->

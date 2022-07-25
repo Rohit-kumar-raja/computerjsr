@@ -14,6 +14,7 @@
                 </ul>
             </div>
             <!-- END TOP BAR LEFT PART -->
+            <span id="feedback"></span>
             <style>
               
                 .pop-outin {
@@ -168,8 +169,8 @@
                     <li>
                         @livewire('mega-menu-component')
                     </li>
-                    <li><a href="{{ route('amc.package') }}">AMC'S</a></li>
-                    <li><a href="{{ route('rent') }}">Rent</a></li>
+                    <!--<li><a href="{{ route('amc.package') }}">AMC'S</a></li>-->
+                    <!--<li><a href="{{ route('rent') }}">Rent</a></li>-->
                     <li><a href="https://quicksecureindia.com/product-category/peripherals">Accessories</a></li>
                     
                     
@@ -257,13 +258,13 @@
 
 
     <!-- sticky logih button -->
-    <div id="feedback">
-        <a href="https://partners.quicksecureindia.com/new-reg/dealer-login.php">Dealer Login</a>
-    </div>
+    <!--<div id="feedback">-->
+    <!--    <a href="https://partners.quicksecureindia.com/new-reg/dealer-login.php">Dealer Login</a>-->
+    <!--</div>-->
 
-    <div id="feedback" style="margin-top:200px;">
-        <a href="https://partners.quicksecureindia.com/new-reg/staff-login.php">AMC Login</a>
-    </div>
+    <!--<div id="feedback" style="margin-top:200px;">-->
+    <!--    <a href="https://partners.quicksecureindia.com/new-reg/staff-login.php">AMC Login</a>-->
+    <!--</div>-->
 
     <!-- employee login -->
     <div id="popup1" class="overlay">

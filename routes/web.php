@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\WalletController;
 use App\Http\Controllers\PdfController;
-use App\Http\Livewire\Admin\AdminAddBrandComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddFeatureCcomponent;
@@ -25,20 +24,13 @@ use App\Http\Livewire\ShippingPolicyComponent;
 use App\Http\Livewire\PrivacyPolicyComponent;
 use App\Http\Livewire\TermuseComponent;
 use App\Http\Livewire\CategoryComponent;
-use App\Http\Livewire\Admin\AdminHomeBannerComponent;
-use App\Http\Livewire\Admin\AdminAddHomeBannerComponent;
-use App\Http\Livewire\Admin\AdminEditHomeBannerComponent;
 use App\Http\Livewire\Admin\HomeCouponComponent;
 use App\Http\Livewire\Admin\HomeAddCouponComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
-use App\Http\Livewire\Admin\AdminBrandSliderComponent;
-use App\Http\Livewire\Admin\AdminAddBrandSliderComponent;
-use App\Http\Livewire\Admin\AdminEditBrandSliderComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
 use App\Http\Livewire\Admin\AdminHomeCategoryComponent;
 use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
-use App\Http\Livewire\Admin\AdminBrandComponent;
 use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminFeatureComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
@@ -62,6 +54,7 @@ use App\Http\Controllers\Admin\GreatOfferController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\CustomiseController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PackageController;
@@ -103,6 +96,7 @@ Route::get('cart/checkout', CheckoutComponent::class)->name('cart.checkout');
 // cart end
 
 // wishlist start
+Route::get('/customise', []);
 
 
 // wishlist end
@@ -124,7 +118,6 @@ Route::get('product/pincode/{pincode}', [ProductDetailsController::class, 'pinco
 Route::get('product/coupon/{coupon}', [ProductDetailsController::class, 'coupon']);
 
 Route::get('/search', SearchComponent::class)->name('product.search');
-// Route::post('/searchproduct' ,[SearchController::class,'index'])->name('products.search');
 
 Route::get('/product-category/{category_slug}/{scategory_slug?}', CategoryComponent::class)->name('product.category');
 
@@ -144,9 +137,11 @@ Route::get('/shippingpolicy', ShippingPolicyComponent::class);
 Route::get('/privacypolicy', PrivacyPolicyComponent::class);
 Route::get('/termuse', TermuseComponent::class);
 Route::get('amc/packages', [PackageController::class, 'index'])->name('amc.package');
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+
+Route::get('customise',[CustomiseController::class,'index'])->name('customise');
+Route::get('customise/{category}',[CustomiseController::class,'ajaxGet'])->name('customise.ajax');
+Route::get('customise/brand/{brand}',[CustomiseController::class,'ajaxBrand'])->name('customise.ajaxbrand');
+
 
 // For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -216,23 +211,15 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     // product end
 
 
-    // Route::get('/admin/home-slider', AdminHomeSliderComponent::class)->name('admin.homeslider');
-    // Route::get('/admin/home-slider/add', AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
-    // Route::get('/admin/home-slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
     Route::get('admin/feature/add', AdminAddFeatureCcomponent::class)->name('admin.addfeature');
     Route::get('admin/features/{feature_slug?}', AdminFeatureComponent::class)->name('admin.features');
-    // Route::get('/admin/brand', AdminBrandSliderComponent::class)->name('admin.brand');
-    // Route::get('/admin/brand/add', AdminAddBrandSliderComponent::class)->name('admin.addbrand');
-    // Route::get('/admin/brand/edit/{brand_id}', AdminEditBrandSliderComponent::class)->name('admin.editbrand');
+    
     Route::get('/admin/slider', AdminHomeSliderComponent::class)->name('admin.slider');
     Route::get('/admin/slider/add', AdminAddHomeSliderComponent::class)->name('admin.addslider');
     Route::get('/admin/slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.editslider');
     Route::get('/admin/coupon', HomeCouponComponent::class)->name('admin.coupon');
     Route::get('/admin/coupon/add', HomeAddCouponComponent::class)->name('admin.addcoupon');
-    // Route::get('/admin/banner', AdminHomeBannerComponent::class)->name('admin.banner');
-    // Route::get('/admin/banner/add', AdminAddHomeBannerComponent::class)->name('admin.addbanner');
-    // Route::get('/admin/banner/edit/{banner_id}', AdminEditHomeBannerComponent::class)->name('admin.editbanner');
-
+  
     Route::get('/admin/wallet', [WalletController::class, 'index'])->name('admin.wallet');
     Route::post('/admin/wallet/add', [WalletController::class, 'store'])->name('admin.wallet.add');
     Route::get('/admin/wallet/edit/{id}', [WalletController::class, 'edit'])->name('admin.wallet.edit');
@@ -351,4 +338,3 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
 
 Route::any('/payu/payment', [PayuMoneyController::class, 'intiate_payment'])->name('payu.pay');
 Route::post('/payu/amc/payment/success', [PayuMoneyController::class, 'payumoneySuccess'])->name('payumoneysuccess');
-// Route::any('/payu/amc/payment/cancel', [PayuMoneyController::class, 'paymentCancelAmc'])->name('payumoney-cancel-amc');

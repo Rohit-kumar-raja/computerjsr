@@ -56,11 +56,11 @@ class OtpController extends Controller
         //Multiple mobiles numbers separated by comma
         $mobileNumber = $mobileNumber;
         //Sender ID,While usi
-        $senderId = "QCKSPT";
+        $senderId = "CPTSOL";
         $country = "91";
-        $DLT_TE_ID = "1207164984352850388";
+        $DLT_TE_ID = "1207164940295292128";
         //Your message to send, Add URL encoding here.
-        $message = 'Your Quick Secure login OTP is'  . $otp;
+        $message = 'Your Computer Solution log in OTP is'  . $otp;
         //Define route 
         $route = "4";
         //Prepare you post parameters
