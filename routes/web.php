@@ -138,19 +138,25 @@ Route::get('/privacypolicy', PrivacyPolicyComponent::class);
 Route::get('/termuse', TermuseComponent::class);
 Route::get('amc/packages', [PackageController::class, 'index'])->name('amc.package');
 
-Route::get('customise',[CustomiseController::class,'index'])->name('customise');
-Route::get('customise/{category}',[CustomiseController::class,'ajaxGet'])->name('customise.ajax');
-Route::get('customise/brand/{brand}',[CustomiseController::class,'ajaxBrand'])->name('customise.ajaxbrand');
-
 
 // For User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('customise', [CustomiseController::class, 'index'])->name('customise');
+    Route::get('customise/{category}', [CustomiseController::class, 'ajaxGet'])->name('customise.ajax');
+    Route::get('customise/brand/{brand}', [CustomiseController::class, 'ajaxBrand'])->name('customise.ajaxbrand');
+    Route::get('customise/storage/{brand}', [CustomiseController::class, 'ajaxStorage'])->name('customise.ajaxstorage');
+    Route::get('customise/image/{slug}', [CustomiseController::class, 'getImage'])->name('customise.getImage');
+    Route::post('customise/store', [CustomiseController::class, 'storeData'])->name('customise.storeData');
+    Route::post('customise/fetch/user', [CustomiseController::class, 'fetchUser'])->name('customise.fetchUser');
+    Route::post('customise/print/user/{id}', [CustomiseController::class, 'printUser'])->name('customise.printuser');
+    
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.orders');
     Route::get('/user/order/{order_id}', UserOrderDetailsComponent::class)->name('user.orderdetails');
     Route::post('/user/order/cancel', [ProductDetailsController::class, 'cancelOrder'])->name('user.order.cancel');
     // for orignal bill printing
-    Route::get('/user/orders/orignal/bill/{id}', [OrderController::class,'finalBill'])->name('user.orders.finalbill');
+    Route::get('/user/orders/orignal/bill/{id}', [OrderController::class, 'finalBill'])->name('user.orders.finalbill');
 
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
     Route::post('/user/review/add', [UserReviewComponent::class, 'addReview'])->name('user.review.add');
@@ -213,13 +219,13 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
 
     Route::get('admin/feature/add', AdminAddFeatureCcomponent::class)->name('admin.addfeature');
     Route::get('admin/features/{feature_slug?}', AdminFeatureComponent::class)->name('admin.features');
-    
+
     Route::get('/admin/slider', AdminHomeSliderComponent::class)->name('admin.slider');
     Route::get('/admin/slider/add', AdminAddHomeSliderComponent::class)->name('admin.addslider');
     Route::get('/admin/slider/edit/{slider_id}', AdminEditHomeSliderComponent::class)->name('admin.editslider');
     Route::get('/admin/coupon', HomeCouponComponent::class)->name('admin.coupon');
     Route::get('/admin/coupon/add', HomeAddCouponComponent::class)->name('admin.addcoupon');
-  
+
     Route::get('/admin/wallet', [WalletController::class, 'index'])->name('admin.wallet');
     Route::post('/admin/wallet/add', [WalletController::class, 'store'])->name('admin.wallet.add');
     Route::get('/admin/wallet/edit/{id}', [WalletController::class, 'edit'])->name('admin.wallet.edit');
