@@ -148,9 +148,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('customise/storage/{brand}', [CustomiseController::class, 'ajaxStorage'])->name('customise.ajaxstorage');
     Route::get('customise/image/{slug}', [CustomiseController::class, 'getImage'])->name('customise.getImage');
     Route::post('customise/store', [CustomiseController::class, 'storeData'])->name('customise.storeData');
-    Route::post('customise/fetch/user', [CustomiseController::class, 'fetchUser'])->name('customise.fetchUser');
-    Route::post('customise/print/user/{id}', [CustomiseController::class, 'printUser'])->name('customise.printuser');
-    
+    Route::get('customise/fetch/user', [CustomiseController::class, 'fetchUser'])->name('customise.fetchUser');
+    Route::get('customise/print/user/{id}', [CustomiseController::class, 'printUser'])->name('customise.printuser');
+
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.orders');
     Route::get('/user/order/{order_id}', UserOrderDetailsComponent::class)->name('user.orderdetails');
@@ -189,6 +189,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 // For Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
+
+
+    Route::get('customise/fetch/admin', [CustomiseController::class, 'fetchAdmin'])->name('customise.fetchAdmin');
+    Route::get('customise/print/admin/{id}', [CustomiseController::class, 'printAdmin'])->name('customise.printAdmin');
+
+
+
+
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
     // category
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');

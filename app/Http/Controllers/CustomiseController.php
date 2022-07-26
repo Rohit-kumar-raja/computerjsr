@@ -95,7 +95,8 @@ class CustomiseController extends Controller
     {
         try {
             DB::table('custome_pcs')->insert($request->except('_token'));
-            return back()->with('success', 'Your Request has been sent Reicived we will contact you soon');
+            return redirect()->route('customise.fetchUser');
+            // return back()->with('success', 'Your Request has been sent Reicived we will contact you soon');
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -109,13 +110,18 @@ class CustomiseController extends Controller
 
     public function printUser($id)
     {
-        $user = DB::table('custome_pcs')->where('user_id', Auth::user()->id)->where('id',$id)->get();
-        return view('livewire.user.user-custome-pc', ['data' => $user]);
+        $user = DB::table('custome_pcs')->where('user_id', Auth::user()->id)->where('id', $id)->first();
+        return view('livewire.user.custom-pc-invoice-component', ['data' => $user]);
     }
 
     public function fetchAdmin()
     {
         $user = DB::table('custome_pcs')->get();
-        return view('livewire.user.user-custome-pc', ['data' => $user]);
+        return view('livewire.admin.custome_pc.index', ['data' => $user]);
+    }
+    public function printAdmin($id)
+    {
+        $user = DB::table('custome_pcs')->where('id', $id)->first();
+        return view('livewire.user.custom-pc-invoice-component', ['data' => $user]);
     }
 }

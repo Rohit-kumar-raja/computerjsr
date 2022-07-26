@@ -188,6 +188,24 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Custom"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-building"></i>                        <span>Custom PC</span>
+        </a>
+        <div id="Custom" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom section:</h6>
+                <a class="collapse-item" href="{{ route('customise.fetchAdmin') }}">Custom Pc</a>
+
+            </div>
+        </div>
+    </li>
+
+
+
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

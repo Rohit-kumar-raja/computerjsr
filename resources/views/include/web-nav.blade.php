@@ -111,6 +111,7 @@
                                         <li><a href="{{ route('user.orders') }}">My Orders</a></li>
                                         <li><a href="{{ route('amc.package.user.history') }}">AMC Orders</a></li>
                                         <li><a href="{{ route('rent.user.history') }}">Rent History</a></li>
+                                        <li><a href="{{ route('customise.fetchUser') }}">Custtome Pc History</a></li>
 
                                         <li>
                                             <a href="{{ route('logout') }}"

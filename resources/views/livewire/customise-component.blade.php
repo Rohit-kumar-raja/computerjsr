@@ -296,11 +296,11 @@
         </div>
     </div>
     <script>
-        var array = document.getElementsByClassName('col-lg-6');
-        for (let index = 3; index < array.length; index++) {
-            array[index].style.display = "none";
+        // var array = document.getElementsByClassName('col-lg-6');
+        // for (let index = 3; index < array.length; index++) {
+        //     array[index].style.display = "none";
 
-        }
+        // }
     </script>
 
     <script>
